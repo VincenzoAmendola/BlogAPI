@@ -2,6 +2,8 @@ package it.rdev.blog.api.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,11 +13,14 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column
+	@Column (unique = true, nullable=false)
 	private String username;
-	@Column
+	@Column (nullable=false)
 	@JsonIgnore
 	private String password;
+	@OneToMany(mappedBy = "autore", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private Set<Article> articles;
 
 	public String getUsername() {
 		return username;
