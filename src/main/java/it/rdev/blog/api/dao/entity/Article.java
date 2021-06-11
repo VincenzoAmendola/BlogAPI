@@ -38,13 +38,13 @@ public class Article {
 	@Column (nullable=false) // Lo stato è TRUE se l'articolo è stato pubblicato mentre è in FALSE se è in bozza
 	private boolean stato;
 	@ManyToOne()
-	@JoinColumn(name = "categoria", referencedColumnName="nome_cat")
+	@JoinColumn(name = "categoria", referencedColumnName="id")
 	private Category categoria;
 	@ManyToMany(targetEntity= Tag.class, cascade=CascadeType.ALL)
 	@JoinTable(name="TagsxArticle", joinColumns = @JoinColumn(name = "idArticle"), inverseJoinColumns = @JoinColumn(name = "idtag"))
 	private Set<Tag> tags;
 	@ManyToOne()
-	@JoinColumn(name = "autore", referencedColumnName="username")
+	@JoinColumn(name = "autore", referencedColumnName="id")
 	private User autore;
 
 	public String getTitolo() {

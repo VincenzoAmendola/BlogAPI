@@ -18,7 +18,7 @@ public class User {
 	@Column (nullable=false)
 	@JsonIgnore
 	private String password;
-	@OneToMany(mappedBy = "autore", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Article> articles;
 

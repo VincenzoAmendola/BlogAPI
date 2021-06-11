@@ -1,6 +1,7 @@
 package it.rdev.blog.api.controller.dto;
 
 public class CategoryDTO {
+	
 	private String nomeCat;
 
 	public String getNomeCat() {
