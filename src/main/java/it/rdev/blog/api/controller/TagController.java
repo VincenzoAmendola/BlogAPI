@@ -8,21 +8,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.rdev.blog.api.controller.dto.CategoryDTO;
-import it.rdev.blog.api.service.BlogCategoriesService;
+import it.rdev.blog.api.controller.dto.TagDTO;
+import it.rdev.blog.api.service.BlogTagsService;
 
 @RestController
-public class CategoryController {
+public class TagController {
 	
 	@Autowired
-	private BlogCategoriesService bcs;
+	private BlogTagsService bts;
 	
-	@GetMapping(value = "/api/categoria")
+	@GetMapping(value = "/api/tag")
 	public ResponseEntity<?> getCategoria(){
-		Set<CategoryDTO> categories = bcs.getAll();
-		if(categories.isEmpty()) {
+		Set<TagDTO> tags = bts.getAll();
+		if(tags.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Set<CategoryDTO>>(categories, HttpStatus.OK);
+		return new ResponseEntity<Set<TagDTO>>(tags, HttpStatus.OK);
 	}
 }

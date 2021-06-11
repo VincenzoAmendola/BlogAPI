@@ -2,15 +2,18 @@ package it.rdev.blog.api.controller.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class ArticleDTO {
 	private String titolo;
-	private String testo;
 	private String sottotitolo;
 	private String autore;
-	private long categoria;
+	private String categoria;
 	private LocalDate Data_pubblicazione;
 	private LocalDate Data_ultimamodifica;
 	private LocalDate Data_creazione;
+	private String testo;
+	@JsonIgnore
 	private boolean stato;
 	
 	// Getters and Setters for every attribute
@@ -62,10 +65,10 @@ public class ArticleDTO {
 	public void setStato(boolean stato) {
 		this.stato = stato;
 	}
-	public long getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(long categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 	

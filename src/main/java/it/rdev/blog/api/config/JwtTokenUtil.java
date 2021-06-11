@@ -32,6 +32,11 @@ public class JwtTokenUtil implements Serializable {
 	public String getUsernameFromToken(String token) {
 		return getClaimFromToken(token, Claims::getSubject);
 	}
+	
+	
+	public Long getUserIdFromToken(String token) {
+		return Long.parseLong(getClaimFromToken(token, Claims::getIssuer));
+	}
 
 	/**
 	 * Metodo che recupera la data di scadenza del token passato in input

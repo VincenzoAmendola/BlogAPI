@@ -13,14 +13,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column (unique = true, nullable=false)
+	@Column (unique = true, length = 50, nullable=false)
 	private String username;
-	@Column (nullable=false)
+	@Column (nullable=false, length = 100)
 	@JsonIgnore
 	private String password;
 	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Article> articles;
+	
+	
+	public long getId() {
+		return id;
+	}
 
 	public String getUsername() {
 		return username;

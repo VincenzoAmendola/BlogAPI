@@ -23,11 +23,11 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(unique = true, nullable=false)
+	@Column(unique = true, length = 30, nullable=false)
 	private String titolo;
 	@Column (nullable=false)
 	private String testo;
-	@Column 
+	@Column (length = 30)
 	private String sottotitolo;
 	@Column
 	private LocalDate data_pubblicazione;
@@ -62,4 +62,78 @@ public class Article {
 	public void setTesto(String testo) {
 		this.testo = testo;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getSottotitolo() {
+		return sottotitolo;
+	}
+
+	public void setSottotitolo(String sottotitolo) {
+		this.sottotitolo = sottotitolo;
+	}
+
+	public LocalDate getData_pubblicazione() {
+		return data_pubblicazione;
+	}
+
+	public void setData_pubblicazione(LocalDate data_pubblicazione) {
+		this.data_pubblicazione = data_pubblicazione;
+	}
+
+	public LocalDate getData_ultimamodifica() {
+		return data_ultimamodifica;
+	}
+
+	public void setData_ultimamodifica(LocalDate data_ultimamodifica) {
+		this.data_ultimamodifica = data_ultimamodifica;
+	}
+
+	public LocalDate getData_creazione() {
+		return data_creazione;
+	}
+
+	public void setData_creazione(LocalDate data_creazione) {
+		this.data_creazione = data_creazione;
+	}
+
+	public boolean isStato() {
+		return stato;
+	}
+
+	public void setStato(boolean stato) {
+		this.stato = stato;
+	}
+
+	public Category getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Category categoria) {
+		this.categoria = categoria;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public User getAutore() {
+		return autore;
+	}
+
+	public void setAutore(User autore) {
+		this.autore = autore;
+	}
+	
+	
 }
