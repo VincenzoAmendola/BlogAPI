@@ -1,6 +1,6 @@
 package it.rdev.blog.api.dao.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 import it.rdev.blog.api.dao.entity.Category;
 import javax.persistence.CascadeType;
@@ -30,18 +30,18 @@ public class Article {
 	@Column (length = 30)
 	private String sottotitolo;
 	@Column
-	private LocalDate data_pubblicazione;
+	private LocalDateTime data_pubblicazione;
 	@Column
-	private LocalDate data_ultimamodifica;
+	private LocalDateTime data_ultimamodifica;
 	@Column (nullable=false)
-	private LocalDate data_creazione;
+	private LocalDateTime data_creazione;
 	@Column (nullable=false) // Lo stato è TRUE se l'articolo è stato pubblicato mentre è in FALSE se è in bozza
 	private boolean stato;
 	@ManyToOne()
 	@JoinColumn(name = "categoria", referencedColumnName="id")
 	private Category categoria;
 	@ManyToMany(targetEntity= Tag.class, cascade=CascadeType.ALL)
-	@JoinTable(name="TagsxArticle", joinColumns = @JoinColumn(name = "idArticle"), inverseJoinColumns = @JoinColumn(name = "idtag"))
+	@JoinTable(name="TagxArticle", joinColumns = @JoinColumn(name = "idArticle"), inverseJoinColumns = @JoinColumn(name = "idtag"))
 	private Set<Tag> tags;
 	@ManyToOne()
 	@JoinColumn(name = "autore", referencedColumnName="id")
@@ -79,27 +79,27 @@ public class Article {
 		this.sottotitolo = sottotitolo;
 	}
 
-	public LocalDate getData_pubblicazione() {
+	public LocalDateTime getData_pubblicazione() {
 		return data_pubblicazione;
 	}
 
-	public void setData_pubblicazione(LocalDate data_pubblicazione) {
+	public void setData_pubblicazione(LocalDateTime data_pubblicazione) {
 		this.data_pubblicazione = data_pubblicazione;
 	}
 
-	public LocalDate getData_ultimamodifica() {
+	public LocalDateTime getData_ultimamodifica() {
 		return data_ultimamodifica;
 	}
 
-	public void setData_ultimamodifica(LocalDate data_ultimamodifica) {
+	public void setData_ultimamodifica(LocalDateTime data_ultimamodifica) {
 		this.data_ultimamodifica = data_ultimamodifica;
 	}
 
-	public LocalDate getData_creazione() {
+	public LocalDateTime getData_creazione() {
 		return data_creazione;
 	}
 
-	public void setData_creazione(LocalDate data_creazione) {
+	public void setData_creazione(LocalDateTime data_creazione) {
 		this.data_creazione = data_creazione;
 	}
 

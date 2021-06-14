@@ -1,6 +1,7 @@
 package it.rdev.blog.api.controller.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -9,10 +10,11 @@ public class ArticleDTO {
 	private String sottotitolo;
 	private String autore;
 	private String categoria;
-	private LocalDate Data_pubblicazione;
-	private LocalDate Data_ultimamodifica;
-	private LocalDate Data_creazione;
+	private LocalDateTime Data_pubblicazione;
+	private LocalDateTime Data_ultimamodifica;
+	private LocalDateTime Data_creazione;
 	private String testo;
+	private Set<String> tags;
 	@JsonIgnore
 	private boolean stato;
 	
@@ -41,22 +43,22 @@ public class ArticleDTO {
 	public void setAutore(String autore) {
 		this.autore = autore;
 	}
-	public LocalDate getData_pubblicazione() {
+	public LocalDateTime getData_pubblicazione() {
 		return Data_pubblicazione;
 	}
-	public void setData_pubblicazione(LocalDate data_pubblicazione) {
+	public void setData_pubblicazione(LocalDateTime data_pubblicazione) {
 		Data_pubblicazione = data_pubblicazione;
 	}
-	public LocalDate getData_ultimamodifica() {
+	public LocalDateTime getData_ultimamodifica() {
 		return Data_ultimamodifica;
 	}
-	public void setData_ultimamodifica(LocalDate data_ultimamodifica) {
+	public void setData_ultimamodifica(LocalDateTime data_ultimamodifica) {
 		Data_ultimamodifica = data_ultimamodifica;
 	}
-	public LocalDate getData_creazione() {
+	public LocalDateTime getData_creazione() {
 		return Data_creazione;
 	}
-	public void setData_creazione(LocalDate data_creazione) {
+	public void setData_creazione(LocalDateTime data_creazione) {
 		Data_creazione = data_creazione;
 	}
 	public boolean isStato() {
@@ -70,6 +72,12 @@ public class ArticleDTO {
 	}
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	public Set<String> getTags() {
+		return tags;
+	}
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
 	}
 	
 	

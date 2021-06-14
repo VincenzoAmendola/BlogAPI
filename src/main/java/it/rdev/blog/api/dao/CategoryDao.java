@@ -14,4 +14,5 @@ public interface CategoryDao extends CrudRepository<Category,Long> {
 	@Query("Select c From Category c")
 	Set<Category> findAll();
 	
+	Category findByNomecat(String nome);
 }

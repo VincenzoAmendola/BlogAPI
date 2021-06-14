@@ -18,7 +18,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column (nullable=false, length = 30)
-	private String nome_cat;
+	private String nomecat;
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	private Set<Article> articles;
 	
@@ -30,10 +30,10 @@ public class Category {
 		this.id = id;
 	}
 	public String getNomeCat() {
-		return nome_cat;
+		return nomecat;
 	}
 	public void setNomeCat(String nomeCat) {
-		this.nome_cat = nomeCat;
+		this.nomecat = nomeCat;
 	}
 	public Set<Article> getArticles() {
 		return articles;

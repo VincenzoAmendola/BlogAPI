@@ -11,4 +11,6 @@ public interface TagDao extends CrudRepository<Tag,Long> {
 	
 	@Query("Select t From Tag t")
 	Set<Tag> findAll();
+	
+	Tag findByNometag(String nome);
 }
