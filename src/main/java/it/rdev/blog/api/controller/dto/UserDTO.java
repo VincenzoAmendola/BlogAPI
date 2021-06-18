@@ -1,11 +1,12 @@
 package it.rdev.blog.api.controller.dto;
 
 public class UserDTO {
+	
 	private Integer id;
 	private String username;
 	private String password;
 	
-	
+
 	public Integer getId() {
 		return id;
 	}

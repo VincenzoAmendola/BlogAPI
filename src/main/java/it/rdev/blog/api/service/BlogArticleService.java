@@ -1,11 +1,15 @@
 package it.rdev.blog.api.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import it.rdev.blog.api.controller.dto.ArticleDTO;
@@ -39,6 +43,13 @@ public class BlogArticleService {
 		Set<ArticleDTO> articlesDTO = ConverterArticleEntitytoDTO(articles, idUserLogin);
 		return articlesDTO;
 	}
+	
+//	public Page<ArticleDTO> findAll(Long idUserLogin, Pageable page){
+//		Page<Article> pagArticles = articleDao.findAuthorized(idUserLogin, page);
+//		//articleDTO.map(articlesList)
+//		
+//	}
+	
 	
 	public Set<ArticleDTO> findByAutore(String s, Long idUserLogin){
 		Set<Article> articles = articleDao.findByAutore(s);
@@ -222,12 +233,17 @@ public class BlogArticleService {
 		}
 			}
 		}
+		// i save the old state, to control if the update is gonna publish, or if the update is on an already published article
+		boolean oldState = newArt.isStato();
 		newArt.setTitolo(article.getTitolo());
 		newArt.setSottotitolo(article.getSottotitolo());
 		newArt.setAutore(user);
 		newArt.setCategoria(category);
 		newArt.setTags(tags);
 		newArt.setStato(article.isStato());
+		if(newArt.isStato() && !oldState) {
+			newArt.setData_pubblicazione(LocalDateTime.now());
+		}
 		newArt.setData_ultimamodifica(LocalDateTime.now());
 		newArt.setId(id);
 		newArt.setTesto(article.getTesto());
